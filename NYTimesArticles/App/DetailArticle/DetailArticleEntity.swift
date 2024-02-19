@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct DetailArticleEntity: Decodable {
+    var title: String
+    var byline: String
+    var published_date: String
+    var abstract: String
+}

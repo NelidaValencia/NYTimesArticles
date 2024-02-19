@@ -28,11 +28,12 @@ class ListPopularItemsView: UIViewController {
     
     private var itemsTableView: UITableView = {
         let tableView = UITableView()
+        tableView.accessibilityIdentifier = "UITableID"
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ArticleCellView.self, forCellReuseIdentifier: "ArticleCellView")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
-        
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
@@ -51,7 +52,13 @@ class ListPopularItemsView: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpTableView()
-        presenter.onViewAppear()
+        loadData()
+    }
+    
+    private func loadData() {
+        Task{ [weak self] in
+            await self?.presenter.fetchPopularItems()
+        }
     }
     
     private func setUpTableView() {
@@ -72,8 +79,18 @@ class ListPopularItemsView: UIViewController {
             itemsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             itemsTableView.topAnchor.constraint(equalTo: titleImage.topAnchor, constant: 80)
         ])
-        
+        loader.isHidden = false
+        loader.color = .systemGray
+        loader.startAnimating()
+        itemsTableView.isHidden = true
         itemsTableView.dataSource = self
+        itemsTableView.delegate = self
+    }
+}
+
+extension ListPopularItemsView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.onTapCell(atIndex: indexPath.row)
     }
 }
 
@@ -96,6 +113,8 @@ extension ListPopularItemsView: ListPopularItemsUI {
     func update(items: [ViewModel]) {
         print("Items", items)
         DispatchQueue.main.async {
+            self.itemsTableView.isHidden = false
+            self.loader.stopAnimating()
             self.itemsTableView.reloadData()
         }
     }

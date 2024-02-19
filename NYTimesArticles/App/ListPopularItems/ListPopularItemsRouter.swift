@@ -8,13 +8,35 @@
 import Foundation
 import UIKit
 
-class ListPopularItemsRouter {
+protocol ListPopularItemsRouting {
+    var detailRouting: DetailArticleRouting? { get }
+    var listArticleView : ListPopularItemsView? { get }
+    func showListOfArticles(window: UIWindow?)
+    func showDetailArticle(article: PopularItemEntity)
+}
+
+class ListPopularItemsRouter: ListPopularItemsRouting {
+    
+    
+    var detailRouting: DetailArticleRouting?
+    var listArticleView : ListPopularItemsView?
+    
     func showListOfArticles(window: UIWindow?) {
+        self.detailRouting = DetailArticleRouter()
         let interactor = ListPopularItemsInteractor() //ListArticlesinteractorMock()
-        let presenter = ListPopularItemsPresenter(listOfItemPopularInteractor: interactor)
-        let view = ListPopularItemsView(presenter: presenter)
-        presenter.ui = view
-        window?.rootViewController = view
+        let presenter = ListPopularItemsPresenter(listOfItemPopularInteractor: interactor, routerDetail: self)
+        listArticleView = ListPopularItemsView(presenter: presenter)
+        presenter.ui = listArticleView
+        window?.rootViewController = listArticleView
         window?.makeKeyAndVisible()
     }
+
+    func showDetailArticle(article: PopularItemEntity) {
+        guard let fromView = listArticleView else{
+            return
+        }
+        detailRouting?.showDetail(fromViewController: fromView, article: article)
+    }
+    
+    
 }

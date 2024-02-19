@@ -6,3 +6,12 @@
 //
 
 import Foundation
+protocol DetailArticleProtocol {
+    func getDetailArticle(articles: PopularItemEntity) async -> PopularItemEntity
+}
+
+class DetailArticleInteractor : DetailArticleProtocol{
+    func getDetailArticle(articles: PopularItemEntity) async -> PopularItemEntity {
+        return articles
+    }
+}

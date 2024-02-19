@@ -9,9 +9,10 @@ import Foundation
 
 struct Mapper {
     func mapper(entity: PopularItemEntity) -> ViewModel {
-        ViewModel(title: entity.title,
+        ViewModel(title: entity.title, 
                   byline: entity.byline,
-                  published_date: entity.published_date,
-                  abstract: entity.abstract)
+                  published_date: entity.publisheddate,
+                  abstract: entity.abstract
+        )
     }
 }

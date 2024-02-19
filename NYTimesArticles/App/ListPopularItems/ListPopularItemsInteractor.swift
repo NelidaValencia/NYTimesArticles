@@ -6,9 +6,8 @@
 //
 
 import Foundation
-//qTl6HA9lEk9bHwEMNSrdjRAceMnSqQEZ
 
-protocol ListItemsProtocol : AnyObject{
+protocol ListItemsProtocol {
     func getListPopularItems() async -> PopularItemResponseEntity
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PopularItemResponseEntity: Decodable {
+struct PopularItemResponseEntity: Codable {
     var status: String
     var copyright: String
     var num_results: Int
@@ -21,39 +21,47 @@ struct PopularItemResponseEntity: Decodable {
     }
 }
 
-struct PopularItemEntity: Decodable {
+struct PopularItemEntity: Codable {
     var title: String
     var byline: String
-    var published_date: String
+    var publisheddate: String
     var abstract: String
-//    var media: [MediaMetadataItem] = []
+    var url: String
+    var media: [MediaMetadataItem]
     
     enum CodingKeys: String, CodingKey {
         case title = "title"
         case byline = "byline"
-        case published_date = "published_date"
+        case publisheddate = "published_date"
         case abstract = "abstract"
+        case url = "url"
+        case media = "media"
     }
 }
 
-struct MediaMetadataItem: Decodable {
-    var media_metadata: [MediaItem] = []
+struct MediaMetadataItem: Codable {
+    var type: String
+    var subtype: String
+    var caption: String
+    var copyright: String
+    var approvedforsyndication: Int
+    var mediametadata: [MediaItem]
     
     enum CodingKeys: String, CodingKey {
-        case media_metadata = "media-metadata"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.media_metadata = try container.decode([MediaItem].self, forKey: .media_metadata)
+        case mediametadata = "media-metadata"
+        case type = "type"
+        case subtype = "subtype"
+        case caption = "caption"
+        case copyright = "copyright"
+        case approvedforsyndication = "approved_for_syndication"
     }
 }
 
-struct MediaItem: Decodable {
-    var url: String? = ""
-    var format: String? = ""
-    var height: String? = ""
-    var width: String? = ""
+struct MediaItem: Codable {
+    var url: String
+    var format: String
+    var height: Int
+    var width: Int
     
     enum CodingKeys: String, CodingKey {
         case url = "url"

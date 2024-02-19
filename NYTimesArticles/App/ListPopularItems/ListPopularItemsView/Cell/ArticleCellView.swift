@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ArticleCellView: UITableViewCell {
-    let articleMovieImage: UIImageView = {
+    let articleImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +30,7 @@ class ArticleCellView: UITableViewCell {
     
     let articleDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 3
+        label.numberOfLines = 2
         label.font = .systemFont(
             ofSize: 16,
             weight: .medium,
@@ -50,24 +50,24 @@ class ArticleCellView: UITableViewCell {
     }
     
     func setUpView() {
-        addSubview(articleMovieImage)
+        addSubview(articleImage)
         addSubview(articleTitleLabel)
         addSubview(articleDescriptionLabel)
         
         NSLayoutConstraint.activate([
-            articleMovieImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            articleMovieImage.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            articleMovieImage.heightAnchor.constraint(equalToConstant: 200),
-            articleMovieImage.widthAnchor.constraint(equalToConstant: 100),
-            articleMovieImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            articleImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            articleImage.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            articleImage.heightAnchor.constraint(equalToConstant: 150),
+            articleImage.widthAnchor.constraint(equalToConstant: 100),
+            articleImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            articleTitleLabel.leadingAnchor.constraint(equalTo: articleMovieImage.leadingAnchor, constant: 18),
+            articleTitleLabel.leadingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: 20),
             articleTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            articleTitleLabel.topAnchor.constraint(equalTo: articleMovieImage.topAnchor, constant: 24),
+            articleTitleLabel.topAnchor.constraint(equalTo: articleImage.topAnchor, constant: 12),
             
-            articleDescriptionLabel.leadingAnchor.constraint(equalTo: articleMovieImage.leadingAnchor, constant: 20),
+            articleDescriptionLabel.leadingAnchor.constraint(equalTo: articleImage.leadingAnchor, constant: 20),
             articleDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            articleDescriptionLabel.topAnchor.constraint(equalTo: articleTitleLabel.topAnchor, constant: 60)
+            articleDescriptionLabel.topAnchor.constraint(equalTo: articleTitleLabel.topAnchor, constant: 50)
         ])
     }
     

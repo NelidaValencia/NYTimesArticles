@@ -6,3 +6,13 @@
 //
 
 import Foundation
+struct DetailMapper {
+    func map(entity: PopularItemEntity) -> DetailViewModel {
+        .init(title: entity.title,
+              byline: entity.byline,
+              published_date: entity.publisheddate,
+              abstract: entity.abstract,
+              url: URL(string: entity.url)
+        )
+    }
+}
