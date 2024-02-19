@@ -9,12 +9,11 @@ import Foundation
 import UIKit
 
 class ListPopularItemsRouter {
-    func showListOfMovies(window: UIWindow?) {
-        var view = ListPopularItemsView()
-        let interactor = ListPopularItemsInteractor()
+    func showListOfArticles(window: UIWindow?) {
+        let interactor = ListPopularItemsInteractor() //ListArticlesinteractorMock()
         let presenter = ListPopularItemsPresenter(listOfItemPopularInteractor: interactor)
+        let view = ListPopularItemsView(presenter: presenter)
         presenter.ui = view
-        view.presenter = presenter
         window?.rootViewController = view
         window?.makeKeyAndVisible()
     }

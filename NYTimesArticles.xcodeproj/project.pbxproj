@@ -20,6 +20,11 @@
 		9E12771B2B8269C00004830E /* ListPopularItemsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E12771A2B8269C00004830E /* ListPopularItemsPresenter.swift */; };
 		9E12771D2B8269CB0004830E /* ListPopularItemsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E12771C2B8269CB0004830E /* ListPopularItemsRouter.swift */; };
 		9E12771F2B8269DC0004830E /* PopularItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E12771E2B8269DC0004830E /* PopularItemEntity.swift */; };
+		9E1277232B8287150004830E /* ArticleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1277222B8287150004830E /* ArticleCellView.swift */; };
+		9E1277262B82C69C0004830E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9E1277252B82C69C0004830E /* Kingfisher */; };
+		9E1277292B82D1200004830E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1277282B82D1200004830E /* ViewModel.swift */; };
+		9E12772B2B82D2990004830E /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E12772A2B82D2990004830E /* Mapper.swift */; };
+		9E12772E2B82D5030004830E /* ListArticlesinteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E12772D2B82D5030004830E /* ListArticlesinteractorMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,10 @@
 		9E12771A2B8269C00004830E /* ListPopularItemsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPopularItemsPresenter.swift; sourceTree = "<group>"; };
 		9E12771C2B8269CB0004830E /* ListPopularItemsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPopularItemsRouter.swift; sourceTree = "<group>"; };
 		9E12771E2B8269DC0004830E /* PopularItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularItemEntity.swift; sourceTree = "<group>"; };
+		9E1277222B8287150004830E /* ArticleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCellView.swift; sourceTree = "<group>"; };
+		9E1277282B82D1200004830E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9E12772A2B82D2990004830E /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		9E12772D2B82D5030004830E /* ListArticlesinteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListArticlesinteractorMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E1277262B82C69C0004830E /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,11 +189,14 @@
 		9E1277152B8269980004830E /* ListPopularItems */ = {
 			isa = PBXGroup;
 			children = (
+				9E12772C2B82D4DB0004830E /* Mock */,
+				9E1277272B82D1060004830E /* ViewModel */,
 				9E1277162B8269B10004830E /* ListPopularItemsView.swift */,
 				9E1277182B8269B80004830E /* ListPopularItemsInteractor.swift */,
 				9E12771A2B8269C00004830E /* ListPopularItemsPresenter.swift */,
 				9E12771C2B8269CB0004830E /* ListPopularItemsRouter.swift */,
 				9E12771E2B8269DC0004830E /* PopularItemEntity.swift */,
+				9E1277222B8287150004830E /* ArticleCellView.swift */,
 			);
 			path = ListPopularItems;
 			sourceTree = "<group>";
@@ -203,6 +216,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		9E1277272B82D1060004830E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9E1277282B82D1200004830E /* ViewModel.swift */,
+				9E12772A2B82D2990004830E /* Mapper.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9E12772C2B82D4DB0004830E /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				9E12772D2B82D5030004830E /* ListArticlesinteractorMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +249,9 @@
 			dependencies = (
 			);
 			name = NYTimesArticles;
+			packageProductDependencies = (
+				9E1277252B82C69C0004830E /* Kingfisher */,
+			);
 			productName = NYTimesArticles;
 			productReference = 9E1276DA2B82677C0004830E /* NYTimesArticles.app */;
 			productType = "com.apple.product-type.application";
@@ -291,6 +324,9 @@
 				Base,
 			);
 			mainGroup = 9E1276D12B82677B0004830E;
+			packageReferences = (
+				9E1277242B82C69C0004830E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 9E1276DB2B82677C0004830E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -333,9 +369,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E1277292B82D1200004830E /* ViewModel.swift in Sources */,
+				9E1277232B8287150004830E /* ArticleCellView.swift in Sources */,
 				9E12771B2B8269C00004830E /* ListPopularItemsPresenter.swift in Sources */,
 				9E12771D2B8269CB0004830E /* ListPopularItemsRouter.swift in Sources */,
+				9E12772B2B82D2990004830E /* Mapper.swift in Sources */,
 				9E1277192B8269B80004830E /* ListPopularItemsInteractor.swift in Sources */,
+				9E12772E2B82D5030004830E /* ListArticlesinteractorMock.swift in Sources */,
 				9E1276E82B82677C0004830E /* NYTimesArticles.xcdatamodeld in Sources */,
 				9E1277172B8269B10004830E /* ListPopularItemsView.swift in Sources */,
 				9E12771F2B8269DC0004830E /* PopularItemEntity.swift in Sources */,
@@ -520,7 +560,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,7 +590,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -679,6 +719,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E1277242B82C69C0004830E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E1277252B82C69C0004830E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E1277242B82C69C0004830E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9E1276E62B82677C0004830E /* NYTimesArticles.xcdatamodeld */ = {
