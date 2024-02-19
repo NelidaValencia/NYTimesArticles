@@ -1,14 +1,13 @@
 //
-//  NYTimesArticlesTests.swift
+//  DetailArticlePresenterTests.swift
 //  NYTimesArticlesTests
 //
-//  Created by Slacker on 18/02/24.
+//  Created by Slacker on 19/02/24.
 //
 
 import XCTest
-@testable import NYTimesArticles
 
-final class NYTimesArticlesTests: XCTestCase {
+final class DetailArticlePresenterTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
